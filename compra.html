@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Compra</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos adicionales para el formulario de compra si es necesario */
+        .purchase-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .purchase-form h2 {
+            text-align: center;
+        }
+
+        .purchase-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .purchase-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .purchase-form button {
+            width: 100%;
+            padding: 8px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .purchase-form button:hover {
+            background-color: #218838;
+        }
+
+        /* Estilos para la ventana flotante */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Puedes incluir el encabezado común si lo deseas -->
+    </header>
+
+    <main>
+        <div class="purchase-form">
+            <h2>Formulario de Compra</h2>
+            <form id="purchaseForm">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+
+                <label for="tarjeta">Número de Tarjeta:</label>
+                <input type="text" id="tarjeta" name="tarjeta" required>
+
+                <label for="caducidad">Fecha de Caducidad:</label>
+                <input type="text" id="caducidad" name="caducidad" placeholder="MM/AA" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+
+                <button type="submit" class="green-button">Pagar</button>
+            </form>
+        </div>
+
+        <!-- Ventana modal de éxito de compra -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Su compra ha sido realizada con éxito.</p>
+                <p>A su movil le llegara un mensaje con el pedido realizado.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Puedes incluir el pie de página común si lo deseas -->
+    </footer>
+
+    <script>
+        // Formulario de compra
+        document.getElementById('purchaseForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Simular proceso de compra
+            setTimeout(function() {
+                // Mostrar ventana modal
+                document.getElementById('myModal').style.display = 'block';
+
+                // Redireccionar a la página de inicio después de 3 segundos
+                setTimeout(function() {
+                    window.location.href = 'index.html';
+                }, 3000);
+
+            }, 1000);
+        });
+
+        // Cerrar ventana modal al hacer clic en la X
+        document.getElementsByClassName('close')[0].addEventListener('click', function() {
+            document.getElementById('myModal').style.display = 'none';
+        });
+
+        // Cerrar ventana modal al hacer clic fuera de ella
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
+
